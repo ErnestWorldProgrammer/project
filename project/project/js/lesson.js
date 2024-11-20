@@ -109,7 +109,7 @@ nextButton.onclick = () => {
         })
 }
 
-// Изначально загрузить карточку с ID = 1
+
 fetch(`https://jsonplaceholder.typicode.com/todos/1`)
     .then((response) => response.json())
     .then((data) => {

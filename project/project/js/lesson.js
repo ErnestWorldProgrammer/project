@@ -120,7 +120,7 @@ fetch(`https://jsonplaceholder.typicode.com/todos/1`)
         `;
     });
 nextButton.onclick = () => {
-    cardIndex = cardIndex < 200 ? cardIndex + 1 : 1; // Переход на следующую карточку или на первую, если достигнут предел
+    cardIndex = cardIndex < 200 ? cardIndex + 1 : 1;
     fetch(`https://jsonplaceholder.typicode.com/todos/${cardIndex}`)
         .then((response) => response.json())
         .then((data) => {

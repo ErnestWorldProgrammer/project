@@ -108,6 +108,8 @@ nextButton.onclick = () => {
             `
         })
 }
+
+// Изначально загрузить карточку с ID = 1
 fetch(`https://jsonplaceholder.typicode.com/todos/1`)
     .then((response) => response.json())
     .then((data) => {
@@ -117,8 +119,8 @@ fetch(`https://jsonplaceholder.typicode.com/todos/1`)
         <span>${data.id}</span>
         `;
     });
-prevButton.onclick = () => {
-    cardIndex = cardIndex > 1 ? cardIndex - 1 : 200; // Если 1 -> переходит на 200
+nextButton.onclick = () => {
+    cardIndex = cardIndex < 200 ? cardIndex + 1 : 1; // Переход на следующую карточку или на первую, если достигнут предел
     fetch(`https://jsonplaceholder.typicode.com/todos/${cardIndex}`)
         .then((response) => response.json())
         .then((data) => {
@@ -128,4 +130,17 @@ prevButton.onclick = () => {
             <span>${data.id}</span>
             `;
         });
-};
+}
+prevButton.onclick = () => {
+    cardIndex = cardIndex > 1 ? cardIndex - 1 : 200;
+    fetch(`https://jsonplaceholder.typicode.com/todos/${cardIndex}`)
+        .then((response) => response.json())
+        .then((data) => {
+            cardBlock.innerHTML = `
+            <p>${data.title}</p>
+            <p>${data.completed}</p>
+            <span>${data.id}</span>
+            `;
+        });
+}
+
